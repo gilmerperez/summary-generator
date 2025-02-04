@@ -11,6 +11,7 @@ let model: OpenAI;
 
 if (apiKey) {
   // TODO: Initialize the OpenAI model if the API key is provided
+  model = new OpenAI({ temperature: 0, openAIApiKey: apiKey, modelName: 'gpt-3.5-turbo' });
 } else {
   console.error('OPENAI_API_KEY is not configured.');
 }
@@ -18,11 +19,14 @@ if (apiKey) {
 // Create a new prompt template for formatting prompts
 const promptTemplate = new PromptTemplate({
   // TODO: Define the prompt template
+  template: 'Summarize the following text using bullet points:\n{content}',
+  inputVariables: ['content'],
 });
 
 // Format the prompt using the prompt template with the user's text
 const formatPrompt = async (text: string): Promise<string> => {
   // TODO: Use the prompt template to format the prompt
+  return await promptTemplate.format({ content: text });
 };
 
 // Call the OpenAI API to get a response to the formatted prompt
@@ -30,6 +34,7 @@ const promptFunc = async (input: string): Promise<string> => {
   try {
     if (model) {
       // TODO: Call the OpenAI API to get a response to the formatted prompt
+      return await model.invoke(input);
     }
     return 'No OpenAI API key provided. Unable to provide a response.';
   } catch (err) {

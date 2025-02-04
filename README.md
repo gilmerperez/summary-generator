@@ -1,14 +1,63 @@
-# Module 08 Mini-Project: Summary Generator
+# Summary Generator
 
-In this activity, you'll work with a group to build a REST API that will accept text content and then call the OpenAI API to summarize that content into bullet points.
+## Description
 
-**Important**: If you decide not to use the OpenAI API due to cost, you can still complete this activity. However, you won't receive direct responses from the AI model. Instead, you can take the formatted prompts and paste them into ChatGPT to obtain similar responses.
+The Summary Generator is a REST API that processes text content and returns a summarized version in bullet points. This project utilizes the OpenAI API to generate concise summaries, making it easier to extract key information from lengthy text inputs.
+
+## Table of Contents
+
+- [Usage](#usage)
+- [Instructions](#instructions)
+- [Key Features](#key-features)
+- [Sample Input](#sample-input)
+- [Sample Output](#sample-output)
+- [Technology Stack](#technology-stack)
+- [Additional Resources](#additional-resources)
+
+## Usage 
+
+To start the application, run the following commands:
+
+```bash
+npm install # Install dependencies
+npm start   # Start the API server
+```
 
 ## Instructions
 
-The completed REST API should meet the following criteria:
+1. Clone the repository and navigate to the project directory.
 
-* As a user, I can post content to an endpoint and receive a summary of bullet points about that content.
+2. Install dependencies using npm install.
+
+3. Create a .env file using .env.EXAMPLE as a reference and add your OpenAI API key.
+
+4. Start the server with npm start.
+
+5. Use Insomnia or a similar API testing tool to send a POST request to:
+
+```bash
+POST /api/summarize
+```
+
+with the following JSON payload:
+
+```bash
+{
+    "text": "Your long text content here"
+}
+```
+
+6. The API will return a summary in bullet points.
+
+## Key Features
+
+* Accepts text content via a POST request.
+
+* Calls the OpenAI API to generate a summarized response.
+
+* Returns bullet-pointed key takeaways from the input text.
+
+* Can be tested using Insomnia or similar API testing tools.
 
 ## Sample Input
 
@@ -26,25 +75,22 @@ The completed REST API should meet the following criteria:
 }
 ```
 
-## Getting Started
+## Technology Stack
 
-* You'll need to complete the code in the `src/controllers/summarizeController.ts` file to complete the Summary API.
+* **Node.js & Express:** Backend framework for handling API requests.
 
-  * Follow the `TODO` comments to complete the missing portions of the code.
+* **TypeScript:** Provides type safety and enhances development.
 
-* If you have an OpenAI API key make sure to include it in a .env file.
+* **OpenAI API:** Generates text summaries from input content.
 
-  * An example .env file is provided, named `.env.EXAMPLE`.
+* **dotenv:** Manages environment variables securely.
 
-* Use Insomnia to test the Summary API.
+* **Insomnia/Postman:** Used for API testing and verification.
 
-* `POST /api/summarize` should accept a request body with text content, call the OpenAI API to summarize the content, and then return the summary as bullet points in the response.
+## Additional Resources
 
----
+Learn more about Express.js: [Express Documentation](https://expressjs.com/)
 
-## 🏆 Bonus
+OpenAI API documentation: [OpenAI API](https://platform.openai.com/docs/overview)
 
-* Set this project up in your own GitHub repositories, so that you can deploy and use it for future reference!
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Environment variables in Node.js: [dotenv GitHub](https://github.com/motdotla/dotenv)
